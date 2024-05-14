@@ -9,7 +9,8 @@
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
 
-    {% block head %}{% endblock %}
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
     <nav class="navbar  {% if not request.user.is_authenticated %} navbar-expand-lg {% endif %} navbar-light bg-warning">
@@ -39,7 +40,8 @@
       </nav>
 
 
-      {% block content %}{% endblock %}
+      {% block content %}
+      {% endblock %}
 
       <footer class="text-center mt-5 mb-5">
         &copy; PythonYoga.com

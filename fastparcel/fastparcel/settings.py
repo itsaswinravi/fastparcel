@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -51,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.ProfileMiddleWare',
+
 ]
 
 ROOT_URLCONF = 'fastparcel.urls'
@@ -123,6 +126,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_URL = '/sign-in/'
+
+LOGIN_REDIRECT_URL = '/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -138,8 +148,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-SOCIAL_AUTH_FACEBOOK_KEY =""
-SOCIAL_AUTH_FACEBOOK_SECRET=""
+SOCIAL_AUTH_FACEBOOK_KEY ="your facebook app id"
+SOCIAL_AUTH_FACEBOOK_SECRET="your facebook app secret"
 SOCIAL_AUTH_FACEBOOk_SCOPE=['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id, name, email'
@@ -151,5 +161,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TILS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'achu322001@gmail.com'
+# from .passwords import app_password
+
 EMAIL_HOST_PASSWORD = '8388'
-DEFAULT_FROM_EMAIL='Fats Parcel <no-reply@fastparcel.localhost>'
+DEFAULT_FROM_EMAIL='achu322001@gmail.com'

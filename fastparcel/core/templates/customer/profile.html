@@ -1,7 +1,45 @@
 {% extends 'customer/base.html' %}
 {% load bootstrap4 %}
 
+{% block head %}
+
+
+
+<script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDKdlaVhekf-rCwaK89DEJ5e9bSHYmsx5g",
+      authDomain: "fastparcel-cb381.firebaseapp.com",
+      projectId: "fastparcel-cb381",
+      storageBucket: "fastparcel-cb381.appspot.com",
+      messagingSenderId: "320400645449",
+      appId: "1:320400645449:web:da04549b1baba9dc204e98",
+      measurementId: "G-ESDBCH3MZ0"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+
+{% endblock %}
+
 {% block main %}
+
+<!-- /-------Basic Information-----/ -->
 <b class="text-secondary">Basic Information </b><br/>
 <div class="card bg-white mt-2 mb-5">
     <div class="card-body">
@@ -17,6 +55,7 @@
 
 </div>
 
+<!-- /-------password-----/ -->
 
 <b class="text-secondary">change password </b><br/>
 <div class="card bg-white mt-2 mb-5">
@@ -31,4 +70,48 @@
     </div>
 
 </div>
+
+
+<!-- /-------phone number-----/ -->
+
+<b class="text-secondary">phone number </b><br/>
+<div class="card bg-white mt-2 mb-5">
+    <div class="card-body">
+
+        <div id="get-code" class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Your phone number" >
+            <div class="input-group-append">
+              <button class="btn btn-warning" type="button">Send Code</button>
+            </div>
+          </div>
+
+
+        <div id="verify-code" class="input-group mb-3 d-none">
+            <input type="text" class="form-control" placeholder="Verification code" >
+            <div class="input-group-append">
+              <button class="btn btn-warning" type="button">Verify Code</button>
+            </div>
+          </div>
+        
+    </div>
+
+</div>
+
+<script>
+     $('#get-code button').on('click',function () {
+        var phoneNumber = $('#get-code input').val();
+        console.log(phoneNumber);
+        
+        $('#get-code').addClass('d-none');
+        $('#verify-code').removeClass('d-none');
+    });
+
+    $('#verify-code button').on('click', function () {
+       const code = $("verify-code input").val();
+       console.log(code);
+
+    });
+
+</script>
+
 {% endblock %}

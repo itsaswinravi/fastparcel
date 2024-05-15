@@ -126,6 +126,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 LOGIN_URL = '/sign-in/'
 
 LOGIN_REDIRECT_URL = '/'
@@ -139,8 +142,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_URL = '/sign-in/'
-LOGIN_REDIRECT_URL='/'
+
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',

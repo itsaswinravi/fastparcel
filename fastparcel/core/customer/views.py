@@ -20,6 +20,7 @@ def profile_page(request):
         customer_form= forms.BasicCustomerForm(request.POST,request.FILES,instance=request.user.customer)
         if user_form.is_valid() and customer_form.is_valid():
             user_form.save()
+            customer_form.save()
             return redirect(reverse('customer:profile'))
     return render(request, 'customer/profile.html',
                    {'user_form':user_form ,
